@@ -39,6 +39,14 @@ class DoCatchTryThrowsBootcampDataManager {
             return .failure(URLError(.appTransportSecurityRequiresSecureConnection))
         }
     }
+    
+    func getFinalTitle() throws -> String {
+        if isActive {
+            return "NEW FINAL TITLE !!"
+        } else {
+            throw URLError(.badServerResponse)
+        }
+    }
 }
 
 class DoCatchTryThrowsBootcampViewModel : ObservableObject {
@@ -65,6 +73,7 @@ class DoCatchTryThrowsBootcampViewModel : ObservableObject {
         } */
         
         
+        /*
         let result = dataManager.getTitleAsResult()
         
         switch result {
@@ -73,7 +82,15 @@ class DoCatchTryThrowsBootcampViewModel : ObservableObject {
         case .failure(let error) :
             self.text = error.localizedDescription
         }
+        */
         
+        
+        do {
+            let newTitle = try dataManager.getFinalTitle()
+            self.text = newTitle
+        }catch let error {
+            self.text = error.localizedDescription
+        }
 
     }
     
