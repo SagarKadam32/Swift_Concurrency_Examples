@@ -13,8 +13,14 @@ import SwiftUI
 
 class DoCatchTryThrowsBootcampDataManager {
     
-    func getTitle() -> String {
-        return "NEW TITLE !!"
+    let isActive : Bool = false
+    
+    func getTitle() -> String? {
+        if isActive {
+            return "NEW TITLE !!"
+        }else {
+            return nil
+        }
     }
 }
 
@@ -24,7 +30,11 @@ class DoCatchTryThrowsBootcampViewModel : ObservableObject {
     let dataManager = DoCatchTryThrowsBootcampDataManager()
     
     func fetchTitle() {
-        self.text = dataManager.getTitle()
+        let newTitle = dataManager.getTitle()
+        
+        if let newTitle = newTitle {
+            self.text = newTitle
+        }
     }
     
 }
