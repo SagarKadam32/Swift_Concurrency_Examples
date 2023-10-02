@@ -22,6 +22,15 @@ class DoCatchTryThrowsBootcampDataManager {
             return nil
         }
     }
+    
+    func getTitleTupleResult() -> (title: String?, error :Error?) {
+        if isActive {
+            return ("NEW TITLE WITH TUPLE !!", nil)
+        }else {
+            return (nil, URLError(.badURL))
+        }
+        
+    }
 }
 
 class DoCatchTryThrowsBootcampViewModel : ObservableObject {
@@ -30,11 +39,22 @@ class DoCatchTryThrowsBootcampViewModel : ObservableObject {
     let dataManager = DoCatchTryThrowsBootcampDataManager()
     
     func fetchTitle() {
+        
+        /*
         let newTitle = dataManager.getTitle()
         
         if let newTitle = newTitle {
             self.text = newTitle
+        } */
+        
+        let returnedValue = dataManager.getTitleTupleResult()
+        
+        if let newTitle = returnedValue.title {
+            self.text = newTitle
+        } else if let error = returnedValue.error {
+            self.text = error.localizedDescription
         }
+
     }
     
 }
