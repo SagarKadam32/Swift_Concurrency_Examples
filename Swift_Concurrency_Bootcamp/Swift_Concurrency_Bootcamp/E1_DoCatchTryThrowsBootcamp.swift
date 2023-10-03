@@ -13,7 +13,7 @@ import SwiftUI
 
 class DoCatchTryThrowsBootcampDataManager {
     
-    let isActive : Bool = false
+    let isActive : Bool = true
     
     func getTitle() -> String? {
         if isActive {
@@ -46,6 +46,18 @@ class DoCatchTryThrowsBootcampDataManager {
         } else {
             throw URLError(.badServerResponse)
         }
+    }
+    
+    func getFinalTitle1() throws -> String {
+        if isActive {
+            return "Updated Final Text"
+        } else {
+            throw URLError(.backgroundSessionWasDisconnected)
+        }
+    }
+    
+    func getAlwaysError() throws -> String? {
+        throw URLError(.badURL)
     }
 }
 
@@ -85,12 +97,33 @@ class DoCatchTryThrowsBootcampViewModel : ObservableObject {
         */
         
         
+
+//        let newTitle = try? dataManager.getAlwaysError()
+//        if let newTitle = newTitle {
+//            self.text = newTitle
+//        }
+    
+        
+        do  {
+            let newTitle = try? dataManager.getAlwaysError()
+            if let newTitle = newTitle {
+                self.text = newTitle
+            }
+            
+            let finalTitle = try dataManager.getFinalTitle1()
+            self.text = finalTitle
+            
+        }catch let error {
+            self.text = error.localizedDescription
+        }
+        
+        /*
         do {
             let newTitle = try dataManager.getFinalTitle()
             self.text = newTitle
         }catch let error {
             self.text = error.localizedDescription
-        }
+        } */
 
     }
     
