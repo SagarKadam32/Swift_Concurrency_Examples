@@ -12,6 +12,7 @@
 		96BC8DB72ACB2362004796E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96BC8DB62ACB2362004796E7 /* Assets.xcassets */; };
 		96BC8DBA2ACB2362004796E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96BC8DB92ACB2362004796E7 /* Preview Assets.xcassets */; };
 		96BC8DC12ACB241B004796E7 /* E1_DoCatchTryThrowsBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC8DC02ACB241B004796E7 /* E1_DoCatchTryThrowsBootcamp.swift */; };
+		96BC8DC32ACC7C95004796E7 /* Example_Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC8DC22ACC7C95004796E7 /* Example_Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		96BC8DB62ACB2362004796E7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		96BC8DB92ACB2362004796E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		96BC8DC02ACB241B004796E7 /* E1_DoCatchTryThrowsBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E1_DoCatchTryThrowsBootcamp.swift; sourceTree = "<group>"; };
+		96BC8DC22ACC7C95004796E7 /* Example_Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_Main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				96BC8DB62ACB2362004796E7 /* Assets.xcassets */,
 				96BC8DB82ACB2362004796E7 /* Preview Content */,
 				96BC8DC02ACB241B004796E7 /* E1_DoCatchTryThrowsBootcamp.swift */,
+				96BC8DC22ACC7C95004796E7 /* Example_Main.swift */,
 			);
 			path = Swift_Concurrency_Bootcamp;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96BC8DB52ACB2361004796E7 /* ContentView.swift in Sources */,
+				96BC8DC32ACC7C95004796E7 /* Example_Main.swift in Sources */,
 				96BC8DB32ACB2361004796E7 /* Swift_Concurrency_BootcampApp.swift in Sources */,
 				96BC8DC12ACB241B004796E7 /* E1_DoCatchTryThrowsBootcamp.swift in Sources */,
 			);
