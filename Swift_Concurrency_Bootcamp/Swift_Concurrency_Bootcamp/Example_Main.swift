@@ -14,6 +14,10 @@ struct Example_Main: View {
                 Text("1. How to use Do, Try, Catch, and Throws in Swift")
             }
             
+            NavigationLink(destination: E2_DownloadImageAsync()) {
+                Text("2. Download images with Async/Await, @escaping, and Combine | Swift Concurrency")
+            }
+            
         }
     }
 }

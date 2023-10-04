@@ -29,11 +29,17 @@ class DownloadImageAsyncImageLoader {
 
 class DownloadImageViewModel : ObservableObject {
     
-    @Published var image : UIImage? = nil
+    @Published var image1 : UIImage? = nil
     let loader = DownloadImageAsyncImageLoader()
     
     func fetchImage() {
-        self.image = UIImage(systemName: "heart.fill")
+        loader.downloadWithEscaping { [weak self] image, error in
+            if let image = image {
+                DispatchQueue.main.async {
+                    self?.image1 = image
+                }
+            }
+        }
     }
     
 }
@@ -43,12 +49,17 @@ struct E2_DownloadImageAsync: View {
     @StateObject private var viewModel = DownloadImageViewModel()
     
     var body: some View {
-        ZStack {
-            if let image = viewModel.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 250, height: 250)
+        ScrollView {
+            VStack {
+                Text("Image Downlaod Using Closure :")
+                    .bold()
+                    
+                if let image = viewModel.image1 {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 250, height: 250)
+                }
             }
         }
         .onAppear {
