@@ -29,6 +29,12 @@ class AsyncAwaitViewModel : ObservableObject {
         }
     }
     
+    func addAuthor1() async {
+        let author1 = "Author-1 : \(Thread.current)"
+        dataArray.append(author1)
+        
+    }
+    
 }
 
 struct E3_AsyncAwait: View {
@@ -41,8 +47,14 @@ struct E3_AsyncAwait: View {
             }
         }
         .onAppear {
+            Task {
+                await viewModel.addAuthor1()
+            }
+            
+            /*
             viewModel.addTitle1()
             viewModel.addTitle2()
+             */
         }
     }
 }
