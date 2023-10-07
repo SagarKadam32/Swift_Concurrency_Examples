@@ -13,7 +13,19 @@ class AsyncAwaitViewModel : ObservableObject {
     
     func addTitle1() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.dataArray.append("Title1 : \(Thread.current)")
+            self.dataArray.append("Title-1 : \(Thread.current)")
+        }
+    }
+    
+    func addTitle2() {
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
+            let title = "Title-2 : \(Thread.current)"
+            DispatchQueue.main.async {
+                self.dataArray.append(title)
+                
+                let title3 = "Title-3 : \(Thread.current)"
+                self.dataArray.append(title3)
+            }
         }
     }
     
@@ -30,6 +42,7 @@ struct E3_AsyncAwait: View {
         }
         .onAppear {
             viewModel.addTitle1()
+            viewModel.addTitle2()
         }
     }
 }
