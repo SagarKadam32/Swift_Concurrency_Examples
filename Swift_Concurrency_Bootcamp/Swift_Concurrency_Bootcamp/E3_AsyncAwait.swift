@@ -33,6 +33,29 @@ class AsyncAwaitViewModel : ObservableObject {
         let author1 = "Author-1 : \(Thread.current)"
         dataArray.append(author1)
         
+        try? await Task.sleep(nanoseconds: 2_000_000_000)
+        let author2 = "Author-2 : \(Thread.current)"
+        
+        await MainActor.run {
+            dataArray.append(author2)
+        }
+        
+        let author3 = "Author-3 : \(Thread.current)"
+        dataArray.append(author3)
+        
+    }
+    
+    func addSomething() async {
+        
+        try? await Task.sleep(nanoseconds: 2_000_000_000)
+        let something1 = "Something-1 : \(Thread.current)"
+        
+        await MainActor.run {
+            self.dataArray.append(something1)
+            
+            let something2 = "Something-2 : \(Thread.current)"
+            dataArray.append(something2)
+        }
     }
     
 }
@@ -49,6 +72,10 @@ struct E3_AsyncAwait: View {
         .onAppear {
             Task {
                 await viewModel.addAuthor1()
+                await viewModel.addSomething()
+                
+                let finalText = "Final Text : \(Thread.current)"
+                viewModel.dataArray.append(finalText)
             }
             
             /*
