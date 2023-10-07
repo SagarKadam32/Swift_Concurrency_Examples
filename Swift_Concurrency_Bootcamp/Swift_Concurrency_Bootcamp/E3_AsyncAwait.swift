@@ -12,7 +12,9 @@ class AsyncAwaitViewModel : ObservableObject {
     @Published var dataArray : [String] = []
     
     func addTitle1() {
-        self.dataArray.append("Title1 : \(Thread.current)")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.dataArray.append("Title1 : \(Thread.current)")
+        }
     }
     
 }
