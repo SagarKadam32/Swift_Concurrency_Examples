@@ -18,6 +18,9 @@ struct Example_Main: View {
                 Text("2. Download images with Async/Await, @escaping, and Combine | Swift Concurrency")
             }
             
+            NavigationLink(destination: E3_AsyncAwait()) {
+                Text("3. How to use Async and Await")
+            }
         }
     }
 }
