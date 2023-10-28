@@ -60,8 +60,10 @@ struct E4_TaskBootcamp: View {
         .onAppear {
             Task {
                 await viewModel.fetchImage()
+            }
+            
+            Task {
                 await viewModel.fetchImage2()
-
             }
         }
     }
