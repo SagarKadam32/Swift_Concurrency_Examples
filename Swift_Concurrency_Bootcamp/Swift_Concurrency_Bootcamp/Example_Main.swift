@@ -21,6 +21,10 @@ struct Example_Main: View {
             NavigationLink(destination: E3_AsyncAwait()) {
                 Text("3. How to use Async and Await")
             }
+            
+            NavigationLink(destination: E4_TaskBootcamp()) {
+                Text("4. How to use Task and .task")
+            }
         }
     }
 }
