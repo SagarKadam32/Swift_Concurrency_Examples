@@ -72,6 +72,7 @@ struct E4_TaskBootcamp: View {
             }
              */
             
+            /*
             Task(priority: .high) {
                // try? await Task.sleep(nanoseconds:2_000_000_000)
                 
@@ -93,7 +94,18 @@ struct E4_TaskBootcamp: View {
             Task(priority: .background) {
                 print("Background : \(Thread.current) \(Task.currentPriority)")
             }
+             */
             
+            // Child Task & Detached Tasks
+            
+            Task(priority: .userInitiated) {
+                print("User Initiated : \(Task.currentPriority)")
+                
+                Task {
+                    print("User Initiated : \(Task.currentPriority)")
+
+                }
+            }
             
             
         }
