@@ -13,6 +13,7 @@ class TaskBootcampViewModel : ObservableObject {
     @Published var image2 : UIImage? = nil
     
     func fetchImage() async {
+        try? await Task.sleep(nanoseconds: 5_000_000_000)
         do {
             guard let url = URL(string: "https://picsum.photos/1000") else { return }
             let (data, _) = try await URLSession.shared.data(from: url, delegate: nil)
@@ -69,75 +70,78 @@ struct E4_TaskBootcamp: View {
                     .frame(width: 200, height: 200)
             }
         }
-        .onDisappear {
-            fetchImageTask?.cancel()
+        .task {
+            await viewModel.fetchImage()
         }
-        .onAppear {
-//            /*
-//             Task {
-//             print(Thread.current)
-//             print(Task.currentPriority)
-//             await viewModel.fetchImage()
-//             }
+        
+//        .onDisappear {
+//            fetchImageTask?.cancel()
+//        }
+//        .onAppear {
+////            /*
+////             Task {
+////             print(Thread.current)
+////             print(Task.currentPriority)
+////             await viewModel.fetchImage()
+////             }
+////
+////             Task {
+////             print(Thread.current)
+////             print(Task.currentPriority)
+////             await viewModel.fetchImage2()
+////             }
+////             */
+////
+////            /*
+////             Task(priority: .high) {
+////              try? await Task.sleep(nanoseconds:2_000_000_000)
+////
+////             await Task.yield()
+////             print("High : \(Thread.current) \(Task.currentPriority)")
+////             }
+////             Task(priority: .userInitiated) {
+////             print("User Initiated : \(Thread.current) \(Task.currentPriority)")
+////             }
+////             Task(priority: .medium) {
+////             print("Medium : \(Thread.current) \(Task.currentPriority)")
+////             }
+////             Task(priority: .low) {
+////             print("Low : \(Thread.current) \(Task.currentPriority)")
+////             }
+////             Task(priority: .utility) {
+////             print("Utility : \(Thread.current) \(Task.currentPriority)")
+////             }
+////             Task(priority: .background) {
+////             print("Background : \(Thread.current) \(Task.currentPriority)")
+////             }
+////             */
+////
+////             Child Task & Detached Tasks
+////
+////                        Task(priority: .userInitiated) {
+////                            print("User Initiated : \(Task.currentPriority)")
+////
+////                            Task {
+////                                print("User Initiated : \(Task.currentPriority)")
+////
+////                            }
+////                        }
+////
+////            /*
+////             Task(priority: .low) {
+////             print("Low : \(Task.currentPriority)")
+////
+////             Task.detached{
+////             print("Detached : \(Task.currentPriority)")
+////
+////             }
+////             }*/
+//            
+//            fetchImageTask = Task {
+//                await viewModel.fetchImage()
 //
-//             Task {
-//             print(Thread.current)
-//             print(Task.currentPriority)
-//             await viewModel.fetchImage2()
-//             }
-//             */
-//
-//            /*
-//             Task(priority: .high) {
-//              try? await Task.sleep(nanoseconds:2_000_000_000)
-//
-//             await Task.yield()
-//             print("High : \(Thread.current) \(Task.currentPriority)")
-//             }
-//             Task(priority: .userInitiated) {
-//             print("User Initiated : \(Thread.current) \(Task.currentPriority)")
-//             }
-//             Task(priority: .medium) {
-//             print("Medium : \(Thread.current) \(Task.currentPriority)")
-//             }
-//             Task(priority: .low) {
-//             print("Low : \(Thread.current) \(Task.currentPriority)")
-//             }
-//             Task(priority: .utility) {
-//             print("Utility : \(Thread.current) \(Task.currentPriority)")
-//             }
-//             Task(priority: .background) {
-//             print("Background : \(Thread.current) \(Task.currentPriority)")
-//             }
-//             */
-//
-//             Child Task & Detached Tasks
-//
-//                        Task(priority: .userInitiated) {
-//                            print("User Initiated : \(Task.currentPriority)")
-//
-//                            Task {
-//                                print("User Initiated : \(Task.currentPriority)")
-//
-//                            }
-//                        }
-//
-//            /*
-//             Task(priority: .low) {
-//             print("Low : \(Task.currentPriority)")
-//
-//             Task.detached{
-//             print("Detached : \(Task.currentPriority)")
-//
-//             }
-//             }*/
-            
-            fetchImageTask = Task {
-                try? await Task.sleep(nanoseconds: 5_000_000_000)
-                await viewModel.fetchImage()
-
-            }
-        }
+//            }
+//        }
             
         
     }
