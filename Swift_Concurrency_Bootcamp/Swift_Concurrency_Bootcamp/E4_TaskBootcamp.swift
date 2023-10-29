@@ -73,6 +73,7 @@ struct E4_TaskBootcamp: View {
              */
             
             Task(priority: .high) {
+                try? await Task.sleep(nanoseconds:2_000_000_000)
                 print("High : \(Thread.current) \(Task.currentPriority)")
             }
             Task(priority: .userInitiated) {
