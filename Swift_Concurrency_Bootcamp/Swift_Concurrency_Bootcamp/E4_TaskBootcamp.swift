@@ -58,13 +58,41 @@ struct E4_TaskBootcamp: View {
             }
         }
         .onAppear {
+            /*
             Task {
+                print(Thread.current)
+                print(Task.currentPriority)
                 await viewModel.fetchImage()
             }
             
             Task {
+                print(Thread.current)
+                print(Task.currentPriority)
                 await viewModel.fetchImage2()
             }
+             */
+            
+            Task(priority: .high) {
+                print("High : \(Thread.current) \(Task.currentPriority)")
+            }
+            Task(priority: .userInitiated) {
+                print("User Initiated : \(Thread.current) \(Task.currentPriority)")
+            }
+            Task(priority: .medium) {
+                print("Medium : \(Thread.current) \(Task.currentPriority)")
+            }
+            Task(priority: .low) {
+                print("Low : \(Thread.current) \(Task.currentPriority)")
+            }
+            Task(priority: .utility) {
+                print("Utility : \(Thread.current) \(Task.currentPriority)")
+            }
+            Task(priority: .background) {
+                print("Background : \(Thread.current) \(Task.currentPriority)")
+            }
+            
+            
+            
         }
     }
 }
