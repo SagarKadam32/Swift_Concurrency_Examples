@@ -98,11 +98,20 @@ struct E4_TaskBootcamp: View {
             
             // Child Task & Detached Tasks
             
-            Task(priority: .userInitiated) {
-                print("User Initiated : \(Task.currentPriority)")
+//            Task(priority: .userInitiated) {
+//                print("User Initiated : \(Task.currentPriority)")
+//
+//                Task {
+//                    print("User Initiated : \(Task.currentPriority)")
+//
+//                }
+//            }
+            
+            Task(priority: .low) {
+                print("Low : \(Task.currentPriority)")
                 
-                Task {
-                    print("User Initiated : \(Task.currentPriority)")
+                Task.detached{
+                    print("Detached : \(Task.currentPriority)")
 
                 }
             }
