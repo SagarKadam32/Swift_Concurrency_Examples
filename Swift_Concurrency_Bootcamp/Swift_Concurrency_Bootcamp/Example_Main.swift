@@ -22,7 +22,7 @@ struct Example_Main: View {
                 Text("3. How to use Async and Await")
             }
             
-            NavigationLink(destination: E4_TaskBootcamp()) {
+            NavigationLink(destination: TaskBootcampHomeView()) {
                 Text("4. How to use Task and .task")
             }
         }
