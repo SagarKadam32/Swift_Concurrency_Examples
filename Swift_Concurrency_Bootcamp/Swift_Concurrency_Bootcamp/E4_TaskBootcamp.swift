@@ -51,6 +51,8 @@ struct TaskBootcampHomeView : View {
 
 struct E4_TaskBootcamp: View {
     @StateObject private var viewModel = TaskBootcampViewModel()
+    @State private var fetchImageTask : Task<(), Never>? = nil
+    
     var body: some View {
         VStack(spacing: 40) {
             if let image = viewModel.image {
@@ -66,6 +68,9 @@ struct E4_TaskBootcamp: View {
                     .scaledToFit()
                     .frame(width: 200, height: 200)
             }
+        }
+        .onDisappear {
+            fetchImageTask?.cancel()
         }
         .onAppear {
 //            /*
@@ -127,7 +132,7 @@ struct E4_TaskBootcamp: View {
 //             }
 //             }*/
             
-            Task {
+            fetchImageTask = Task {
                 try? await Task.sleep(nanoseconds: 5_000_000_000)
                 await viewModel.fetchImage()
 
