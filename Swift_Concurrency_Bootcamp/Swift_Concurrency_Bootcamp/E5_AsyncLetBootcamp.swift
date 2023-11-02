@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-struct E4_AsyncLetBootcamp: View {
+struct E5_AsyncLetBootcamp: View {
     
     @State private var images:[UIImage] = []
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
+    let url = URL(string: "https://picsum.photos/300")!
     
     
     var body: some View {
@@ -32,10 +33,20 @@ struct E4_AsyncLetBootcamp: View {
             }
         }
     }
+    
+    func fetchImage() async -> UIImage {
+        do {
+            
+            try URLSession.shared.data(from: url)
+            }catch {
+                
+            }
+        }
+    }
 }
 
-struct E4_AsyncLetBootcamp_Previews: PreviewProvider {
+struct E5_AsyncLetBootcamp_Previews: PreviewProvider {
     static var previews: some View {
-        E4_AsyncLetBootcamp()
+        E5_AsyncLetBootcamp()
     }
 }
