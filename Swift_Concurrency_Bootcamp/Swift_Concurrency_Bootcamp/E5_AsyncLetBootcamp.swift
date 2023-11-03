@@ -28,7 +28,25 @@ struct E5_AsyncLetBootcamp: View {
             }
             .navigationTitle("Async Let 😇")
             .onAppear {
-                self.images.append(UIImage(systemName: "heart.fill")!)
+               // self.images.append(UIImage(systemName: "heart.fill")!)
+                Task {
+                    do {
+                        let image1 = try await fetchImage()
+                        self.images.append(image1)
+                        
+                        let image2 = try await fetchImage()
+                        self.images.append(image2)
+                        
+                        let image3 = try await fetchImage()
+                        self.images.append(image3)
+                        
+                        let image4 = try await fetchImage()
+                        self.images.append(image4)
+                        
+                    } catch {
+                        
+                    }
+                }
                     
             }
         }
