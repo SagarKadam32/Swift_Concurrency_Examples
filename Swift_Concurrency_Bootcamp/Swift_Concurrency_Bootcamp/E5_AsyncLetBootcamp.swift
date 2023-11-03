@@ -31,17 +31,28 @@ struct E5_AsyncLetBootcamp: View {
                // self.images.append(UIImage(systemName: "heart.fill")!)
                 Task {
                     do {
-                        let image1 = try await fetchImage()
-                        self.images.append(image1)
                         
-                        let image2 = try await fetchImage()
-                        self.images.append(image2)
+                        async let fetchImage1 = fetchImage()
+                        async let fetchImage2 = fetchImage()
+                        async let fetchImage3 = fetchImage()
+                        async let fetchImage4 = fetchImage()
                         
-                        let image3 = try await fetchImage()
-                        self.images.append(image3)
+                        let (image1, image2, image3, image4) = await (try fetchImage1, try fetchImage2, try fetchImage3, try fetchImage4)
                         
-                        let image4 = try await fetchImage()
-                        self.images.append(image4)
+                        self.images.append(contentsOf: [image1, image2, image3, image4])
+                        
+                        
+//                        let image1 = try await fetchImage()
+//                        self.images.append(image1)
+//
+//                        let image2 = try await fetchImage()
+//                        self.images.append(image2)
+//
+//                        let image3 = try await fetchImage()
+//                        self.images.append(image3)
+//
+//                        let image4 = try await fetchImage()
+//                        self.images.append(image4)
                         
                     } catch {
                         
