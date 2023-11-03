@@ -34,13 +34,16 @@ struct E5_AsyncLetBootcamp: View {
         }
     }
     
-    func fetchImage() async -> UIImage {
+    func fetchImage() async throws -> UIImage {
         do {
-            
-            try URLSession.shared.data(from: url)
-            }catch {
-                
+            let (data, _) = try await URLSession.shared.data(from: url, delegate: nil)
+            if let image = UIImage(data: data){
+                return image
+            }else {
+                throw URLError(.badURL)
             }
+        } catch {
+            throw error
         }
     }
 }
