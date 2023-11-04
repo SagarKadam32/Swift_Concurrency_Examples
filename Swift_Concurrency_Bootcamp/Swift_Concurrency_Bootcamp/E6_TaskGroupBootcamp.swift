@@ -43,7 +43,7 @@ class TaskGroupViewModel : ObservableObject {
     @Published var images:[UIImage] = []
     let manager = TaskGroupDataManager()
     
-    func getImages() async throws {
+    func getImages() async {
         if let images = try? await manager.fetchImagesWithAsyncLet() {
             self.images.append(contentsOf: images)
         }
@@ -66,12 +66,10 @@ struct E6_TaskGroupBootcamp: View {
                     }
                 }
             }
-            .onAppear {
-                Task {
-                    try await viewModel.getImages()
-                }
-            }
             .navigationTitle("Task Group 😇")
+            .task {
+                 await viewModel.getImages()
+            }
         }
     }
 }
