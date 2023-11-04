@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		964A3D612AF642BC00F2BD2D /* E6_TaskGroupBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964A3D602AF642BC00F2BD2D /* E6_TaskGroupBootcamp.swift */; };
 		966720842AED4DD2007DC3F5 /* E4_TaskBootcamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966720832AED4DD2007DC3F5 /* E4_TaskBootcamp.swift */; };
 		96BC8DB32ACB2361004796E7 /* Swift_Concurrency_BootcampApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC8DB22ACB2361004796E7 /* Swift_Concurrency_BootcampApp.swift */; };
 		96BC8DB52ACB2361004796E7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BC8DB42ACB2361004796E7 /* ContentView.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		964A3D602AF642BC00F2BD2D /* E6_TaskGroupBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E6_TaskGroupBootcamp.swift; sourceTree = "<group>"; };
 		966720832AED4DD2007DC3F5 /* E4_TaskBootcamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = E4_TaskBootcamp.swift; sourceTree = "<group>"; };
 		96BC8DAF2ACB2361004796E7 /* Swift_Concurrency_Bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swift_Concurrency_Bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96BC8DB22ACB2361004796E7 /* Swift_Concurrency_BootcampApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swift_Concurrency_BootcampApp.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				96F769D32AD13EA100A5C43D /* E3_AsyncAwait.swift */,
 				966720832AED4DD2007DC3F5 /* E4_TaskBootcamp.swift */,
 				96C92CF22AF40D91007FD91A /* E5_AsyncLetBootcamp.swift */,
+				964A3D602AF642BC00F2BD2D /* E6_TaskGroupBootcamp.swift */,
 				96BC8DC22ACC7C95004796E7 /* Example_Main.swift */,
 			);
 			path = Swift_Concurrency_Bootcamp;
@@ -159,6 +162,7 @@
 				96BC8DC52ACDDCA8004796E7 /* E2_DownloadImageAsync.swift in Sources */,
 				96BC8DC32ACC7C95004796E7 /* Example_Main.swift in Sources */,
 				96F769D42AD13EA100A5C43D /* E3_AsyncAwait.swift in Sources */,
+				964A3D612AF642BC00F2BD2D /* E6_TaskGroupBootcamp.swift in Sources */,
 				96C92CF32AF40D91007FD91A /* E5_AsyncLetBootcamp.swift in Sources */,
 				96BC8DB32ACB2361004796E7 /* Swift_Concurrency_BootcampApp.swift in Sources */,
 				966720842AED4DD2007DC3F5 /* E4_TaskBootcamp.swift in Sources */,
