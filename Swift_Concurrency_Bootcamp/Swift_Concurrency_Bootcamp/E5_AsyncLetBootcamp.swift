@@ -36,10 +36,12 @@ struct E5_AsyncLetBootcamp: View {
                         async let fetchImage2 = fetchImage()
                         async let fetchImage3 = fetchImage()
                         async let fetchImage4 = fetchImage()
+                        async let fetchTitle = fetchTitle()
                         
-                        let (image1, image2, image3, image4) = await (try fetchImage1, try fetchImage2, try fetchImage3, try fetchImage4)
+                        let (image1, image2, image3, image4, myTitle) = await (try fetchImage1, try fetchImage2,  try fetchImage3, try fetchImage4, fetchTitle)
                         
                         self.images.append(contentsOf: [image1, image2, image3, image4])
+                        print(myTitle)
                         
                         
 //                        let image1 = try await fetchImage()
@@ -74,6 +76,10 @@ struct E5_AsyncLetBootcamp: View {
         } catch {
             throw error
         }
+    }
+    
+    func fetchTitle() async -> String {
+        return "My Title"
     }
 }
 
