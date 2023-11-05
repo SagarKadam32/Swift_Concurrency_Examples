@@ -28,6 +28,7 @@ class TaskGroupDataManager {
                           "https://picsum.photos/300"]
         return try await withThrowingTaskGroup(of: UIImage.self) { group in
             var images : [UIImage] = []
+            images.reserveCapacity(urlStrings.count)
             
             for urlString in urlStrings {
                 group.addTask {
