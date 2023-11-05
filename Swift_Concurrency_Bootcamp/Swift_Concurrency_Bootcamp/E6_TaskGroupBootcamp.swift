@@ -20,20 +20,19 @@ class TaskGroupDataManager {
     }
     
     func fetchImagesWithTaskGroup() async throws -> [UIImage] {
+        let urlStrings = ["https://picsum.photos/300",
+                          "https://picsum.photos/300",
+                          "https://picsum.photos/300",
+                          "https://picsum.photos/300",
+                          "https://picsum.photos/300",
+                          "https://picsum.photos/300"]
         return try await withThrowingTaskGroup(of: UIImage.self) { group in
             var images : [UIImage] = []
             
-            group.addTask {
-                try await self.fetchImage(urlString: "https://picsum.photos/300")
-            }
-            group.addTask {
-                try await self.fetchImage(urlString: "https://picsum.photos/300")
-            }
-            group.addTask {
-                try await self.fetchImage(urlString: "https://picsum.photos/300")
-            }
-            group.addTask {
-                try await self.fetchImage(urlString: "https://picsum.photos/300")
+            for urlString in urlStrings {
+                group.addTask {
+                    try await self.fetchImage(urlString: urlString)
+                }
             }
             
             for try await image in group {
