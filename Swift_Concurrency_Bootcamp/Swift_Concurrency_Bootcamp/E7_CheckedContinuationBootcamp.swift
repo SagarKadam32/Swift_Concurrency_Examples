@@ -17,6 +17,20 @@ class CheckedContinuationNetworkManager {
            throw error
         }
     }
+    
+    func getDataWithCheckedContinuation(url: URL) async throws -> Data {
+        return try await withCheckedThrowingContinuation { continuation in
+            URLSession.shared.dataTask(with: url) { data,response, error in
+                if let data = data {
+                    continuation.resume(returning: data)
+                }else if let error = error {
+                    continuation.resume(throwing: error)
+                }else {
+                    continuation.resume(throwing: URLError(.badURL))
+                }
+            }
+        }
+    }
 }
 
 class CheckedContinuationViewModel : ObservableObject {
