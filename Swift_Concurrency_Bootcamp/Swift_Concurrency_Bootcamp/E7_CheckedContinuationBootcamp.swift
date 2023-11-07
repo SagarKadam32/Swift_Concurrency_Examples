@@ -23,12 +23,12 @@ class CheckedContinuationNetworkManager {
             URLSession.shared.dataTask(with: url) { data,response, error in
                 if let data = data {
                     continuation.resume(returning: data)
-                }else if let error = error {
+                } else if let error = error {
                     continuation.resume(throwing: error)
-                }else {
+                } else {
                     continuation.resume(throwing: URLError(.badURL))
                 }
-            }
+            }.resume()
         }
     }
 }
@@ -53,7 +53,23 @@ class CheckedContinuationViewModel : ObservableObject {
             print(error.localizedDescription)
             
         }
+    }
+    
+    func getImageWithContinuation() async {
+        guard let url = URL(string: "https://picsum.photos/300") else {
+            return
+        }
         
+        do {
+            let data = try await networkManager.getDataWithCheckedContinuation(url: url)
+            if let image = UIImage(data: data) {
+                await MainActor.run(body: {
+                    self.image = image
+                })
+            }
+        }catch {
+            print(error)
+        }
     }
 }
 
@@ -69,7 +85,8 @@ struct E7_CheckedContinuationBootcamp: View {
             }
         }
         .task {
-            await viewModel.getImage()
+            // await viewModel.getImage()
+            await viewModel.getImageWithContinuation()
         }
     }
 }
