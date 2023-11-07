@@ -25,6 +25,20 @@ struct Example_Main: View {
             NavigationLink(destination: TaskBootcampHomeView()) {
                 Text("4. How to use Task and .task")
             }
+            
+            NavigationLink(destination: E5_AsyncLetBootcamp()) {
+                Text("5. AsyncLet Bootcamp")
+            }
+            
+            NavigationLink(destination: E7_CheckedContinuationBootcamp()) {
+                Text("6.TaskGroup to perform concurrent methods Bootcamp")
+            }
+            
+            NavigationLink(destination: E7_CheckedContinuationBootcamp()) {
+                Text("7. Checked Continuations(withCheckedThrowingContinuation) Bootcamp")
+            }
+            
+            
         }
     }
 }
