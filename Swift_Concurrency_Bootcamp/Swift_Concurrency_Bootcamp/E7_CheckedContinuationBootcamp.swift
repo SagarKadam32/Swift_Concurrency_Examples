@@ -20,6 +20,7 @@ class CheckedContinuationNetworkManager {
 }
 
 class CheckedContinuationViewModel : ObservableObject {
+    
     @Published var image : UIImage? = nil
     let networkManager = CheckedContinuationNetworkManager()
     
@@ -27,15 +28,19 @@ class CheckedContinuationViewModel : ObservableObject {
         guard let url = URL(string: "https://picsum.photos/300") else {
             return
         }
-        
-        let data = try? await networkManager.getData(url: url)
-        if let data = data {
-            await MainActor.run {
-                self.image = UIImage(data: data)
+        do {
+            let data = try await networkManager.getData(url: url)
+            if let image = UIImage(data: data) {
+                await MainActor.run {
+                    self.image = image
+                }
             }
+        }catch {
+            print(error.localizedDescription)
+            
         }
+        
     }
-    
 }
 
 struct E7_CheckedContinuationBootcamp: View {
