@@ -38,6 +38,9 @@ struct Example_Main: View {
                 Text("7. Checked Continuations(withCheckedThrowingContinuation) Bootcamp")
             }
             
+            NavigationLink(destination: E8_StructClassActorBootcamp()) {
+                Text("8. Struct vs Class vs Actor, Value vs Reference Types, Stack vs Heap")
+            }
             
         }
     }
