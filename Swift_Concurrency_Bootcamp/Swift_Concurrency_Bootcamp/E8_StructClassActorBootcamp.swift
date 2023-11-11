@@ -20,30 +20,42 @@ struct MyStruct {
     var title: String
 }
 
-extension E8_StructClassActorBootcamp {
+class MyClass {
+    var title: String
     
+    init(title: String) {
+        self.title = title
+    }
+}
+
+extension E8_StructClassActorBootcamp {
     private func runTest() {
         print("Test started..")
-        structTest1()
-
+        //structTest1()
+        classTest1()
     }
     
     private func structTest1() {
         let objectA = MyStruct(title: "Starting Title.")
         print("Object A: ", objectA.title)
-        
         print("Pass VALUES of Object-A TO Object-B")
         var objectB = objectA
         print("Object B: ", objectB.title)
-        
         objectB.title = "Second Title!"
-        
         print("Object B Title changed!")
         print("Object A: ", objectA.title)
         print("Object B: ", objectB.title)
-
+    }
+    
+    private func classTest1() {
+        let objectA = MyClass(title: "String Class Title.")
+        print("Object A: ", objectA.title)
+        print("Pass REFERENCE of Object-A TO Object-B")
+        let objectB = objectA
+        objectB.title = "Second Title!"
         
-        
-        
+        print("Object B TItle changed")
+        print("Object A: ",objectA.title)
+        print("Object B: ",objectB.title)
     }
 }
