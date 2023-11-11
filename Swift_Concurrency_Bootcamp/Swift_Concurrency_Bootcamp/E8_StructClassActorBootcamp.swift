@@ -71,7 +71,11 @@ struct CustomStruct {
 
 // Mutating Struct
 struct MutatingStruct {
-    var title: String
+    private(set) var title: String
+    
+    init(title: String) {
+        self.title = title
+    }
     
     mutating func udpateTitle(newTitle: String) {
         title = newTitle
