@@ -63,6 +63,10 @@ extension E8_StructClassActorBootcamp {
 // Immutable Struct
 struct CustomStruct {
     let title: String
+    
+    func updateTitle(newTitle: String) -> CustomStruct {
+        return CustomStruct(title: newTitle)
+    }
 }
 
 extension E8_StructClassActorBootcamp {
@@ -77,5 +81,11 @@ extension E8_StructClassActorBootcamp {
         print("Struct2",struct2.title)
         struct2 = CustomStruct(title: "Title2")
         print("Struct2",struct2.title)
+        
+        var struct3 = CustomStruct(title: "TItle1")
+        print("Struct3",struct3.title)
+        struct3 = struct3.updateTitle(newTitle: "Title2")
+        print("Struct3",struct3.title)
+
     }
 }
