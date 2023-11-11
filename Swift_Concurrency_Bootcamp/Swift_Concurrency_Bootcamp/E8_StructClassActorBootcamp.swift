@@ -31,8 +31,9 @@ class MyClass {
 extension E8_StructClassActorBootcamp {
     private func runTest() {
         print("Test started..")
-        //structTest1()
-        classTest1()
+//        structTest1()
+//        classTest1()
+        structTest2()
     }
     
     private func structTest1() {
@@ -53,9 +54,28 @@ extension E8_StructClassActorBootcamp {
         print("Pass REFERENCE of Object-A TO Object-B")
         let objectB = objectA
         objectB.title = "Second Title!"
-        
         print("Object B TItle changed")
         print("Object A: ",objectA.title)
         print("Object B: ",objectB.title)
+    }
+}
+
+// Immutable Struct
+struct CustomStruct {
+    let title: String
+}
+
+extension E8_StructClassActorBootcamp {
+    private func structTest2() {
+        print("structTest2")
+        var struct1 = MyStruct(title: "Title1")
+        print("Struct1",struct1.title)
+        struct1.title = "Title2"
+        print("Struct1",struct1.title)
+        
+        var struct2 = CustomStruct(title: "Title1")
+        print("Struct2",struct2.title)
+        struct2 = CustomStruct(title: "Title2")
+        print("Struct2",struct2.title)
     }
 }
