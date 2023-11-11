@@ -69,9 +69,19 @@ struct CustomStruct {
     }
 }
 
+// Mutating Struct
+struct MutatingStruct {
+    var title: String
+    
+    mutating func udpateTitle(newTitle: String) {
+        title = newTitle
+    }
+}
+
 extension E8_StructClassActorBootcamp {
     private func structTest2() {
         print("structTest2")
+        
         var struct1 = MyStruct(title: "Title1")
         print("Struct1",struct1.title)
         struct1.title = "Title2"
@@ -86,6 +96,11 @@ extension E8_StructClassActorBootcamp {
         print("Struct3",struct3.title)
         struct3 = struct3.updateTitle(newTitle: "Title2")
         print("Struct3",struct3.title)
+        
+        var struct4 = MutatingStruct(title: "Title1")
+        print("Struct4",struct4.title)
+        struct4.udpateTitle(newTitle: "Title2")
+        print("Struct4",struct4.title)
 
     }
 }
